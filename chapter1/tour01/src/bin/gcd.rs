@@ -15,6 +15,9 @@ fn main() {
     for u in v {
         const CHARSET: &str = "abcdefghijklmnopqrstuvwxyz1234567890_!?=<>";
         let vec = CHARSET.chars().collect::<Vec<_>>();
+        let n = u.firstname.chars().collect::<Vec<char>>();
+        println!("{:?}", n);
+
         if u.firstname.contains("S") {
 
             println!("{:?}", u);

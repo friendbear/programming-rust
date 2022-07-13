@@ -1,5 +1,25 @@
+#[derive(Debug, Clone)]
+struct User {
+    firstname: String,
+    lastname: String,
+}
+
+
 fn main() {
-    println!("Hello, world!");
+
+    let v = vec![
+        User{ firstname: "T".to_owned(),  lastname: "Kumagai".to_owned()},
+        User{ firstname: "S".to_owned(),  lastname: "Kumagai".to_owned()},
+    ];
+
+    for u in v {
+        const CHARSET: &str = "abcdefghijklmnopqrstuvwxyz1234567890_!?=<>";
+        let vec = CHARSET.chars().collect::<Vec<_>>();
+        if u.firstname.contains("S") {
+
+            println!("{:?}", u);
+        }
+    }
 
     println!("{}", gcd(14, 15));
 }

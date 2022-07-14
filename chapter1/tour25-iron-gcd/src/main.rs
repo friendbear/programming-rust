@@ -65,5 +65,9 @@ fn post_gcd(request: &mut Request) -> IronResult<Response> {
         }
     }
 
-    todo!()
+    response.set_mut(status::Ok);
+    response.set_mut(mime!(Text/Html; Charset=Utf8)); // set content type to text/html  with utf8 encoding
+    response.set_mut(format!("numbers {:?}\n", numbers));
+
+    Ok(response)
 }

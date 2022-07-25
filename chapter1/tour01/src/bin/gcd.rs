@@ -7,15 +7,15 @@ struct User {
 
 fn main() {
 
-    let v = vec![
-        User{ firstname: "T".to_owned(),  lastname: "Kumagai".to_owned()},
-        User{ firstname: "S".to_owned(),  lastname: "Kumagai".to_owned()},
-    ];
+    let mut v = vec![];
+        v.push(User{ firstname: "T".to_owned(),  lastname: "Kumagai".to_owned()});
+        v.push(User{ firstname: "S".to_owned(),  lastname: "Kumagai".to_owned()});
+
 
     for u in v {
         const CHARSET: &str = "abcdefghijklmnopqrstuvwxyz1234567890_!?=<>";
         let vec = CHARSET.chars().collect::<Vec<_>>();
-        let n = u.firstname.chars().collect::<Vec<char>>();
+        let n = u.firstname.chars().collect::<Vec<_>>();
         println!("{:?}", n);
 
         if u.firstname.contains("S") {

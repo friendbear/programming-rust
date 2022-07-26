@@ -30,5 +30,8 @@ fn test_array() {
     let taxonomy = ["Animalia", "Arthrpopoda", "Insecta"];
 
     assert_eq!(caterrer[3], 7);
-    assert_eq!(taxonomy.len(), 3)
+    assert_eq!(taxonomy.len(), 3);
+
+    let zero_array: [u8; 1024] = [0u8; 1024];
+    assert_eq!(zero_array[0], 0);
 }

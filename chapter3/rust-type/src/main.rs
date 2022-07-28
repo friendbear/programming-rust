@@ -34,4 +34,66 @@ fn test_array() {
 
     let zero_array: [u8; 1024] = [0u8; 1024];
     assert_eq!(zero_array[0], 0);
+
+    let mut chaos = [3, 5, 4, 1, 2];
+    chaos.sort();
+    assert_eq!(chaos, [1, 2, 3, 4, 5]);
 }
+
+#[test]
+fn test_vec() {
+    let mut v = vec![2, 3, 5, 7];
+
+    v.push(1);
+    v.push(1);
+    v.push(1);
+    assert_eq!(v.iter().fold(1, |a, b| a * b), 210);
+
+
+    fn new_pixel_buffer(row: usize, cols: usize) -> Vec<u8> {
+        vec![0; row * cols]
+    }
+
+    assert_eq!(new_pixel_buffer(10, 10).len(), 100);
+
+
+    let mut v = Vec::new();
+    v.push("step");
+    v.push("on");
+    v.push("no");
+    v.push("pets");
+
+    assert_eq!(v, vec!["step", "on", "no", "pets"]);
+
+    let v: Vec<i32> = (0..5).collect();
+    assert_eq!(v, vec![0, 1, 2, 3, 4]);
+
+    // with_capacity
+    let mut v = Vec::with_capacity(2);
+    assert_eq!(v.len(), 0);
+    assert_eq!(v.capacity(), 2);
+
+    v.push(1);
+    v.push(1);
+    assert_eq!(v.len(), 2);
+    assert_eq!(v.capacity(), 2);
+
+    v.push(2);
+    assert_eq!(v.len(), 3);
+    assert_eq!(v.capacity(), 4);
+
+    let mut v = vec![10, 20, 30, 40, 50];
+    v.insert(3, 35);
+    assert_eq!(v, [10, 20, 30, 35, 40, 50]);
+
+    v.remove(1);
+    assert_eq!(v, [10, 30, 35, 40, 50]);
+
+    // pop
+    let mut v = vec!["carmen", "miranda"];
+    assert_eq!(v.pop(), Some("miranda"));
+    assert_eq!(v.pop(), Some("carmen"));
+    assert_eq!(v.pop(), None);
+
+}
+

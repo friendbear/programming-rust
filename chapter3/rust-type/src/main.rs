@@ -155,3 +155,30 @@ fn test_byte_str() {
     let method = b"GET";
     assert_eq!(method, &[b'G', b'E', b'T']);
 }
+
+#[test]
+fn test_str_string() {
+    let s = "hoge".to_owned();
+
+    assert_eq!(s.capacity(), 4);
+    assert_eq!(s.len(), 4);
+    assert_eq!(&s[1..], "oge");
+    assert_eq!(s.chars().count(), 4);
+
+    assert_eq!(format!("{} {:02}' {:02} N", 24, 5, 23,), "24 05' 23 N");
+
+}
+
+#[test]
+fn test_use_string() {
+    assert!("ONE".to_lowercase() == "one");
+
+    assert!("peanut".contains("nut"));
+    assert_eq!("@_@".replace("@", "■"), "■_■");
+    assert_eq!("    str".trim(), "str");
+
+    for word in "veni, vidi, vici".split(", ") {
+        
+        assert!(word.starts_with("v"));
+    }
+}

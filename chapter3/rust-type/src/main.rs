@@ -1,5 +1,7 @@
 fn main() {
     println!("Hello, world!");
+
+    slice();
 }
 
 #[test]
@@ -97,3 +99,23 @@ fn test_vec() {
 
 }
 
+fn slice() {
+    let v = vec![0.0, 0.707, 1.0, 0.707];
+    let a: [f64; 4] =     [0.0, 0.707, 1.0, 0.707];
+
+    let sa: &[f64] = &v;
+    let va: &[f64] = &a;
+
+    print(&v);
+    print(&a);
+    print(&sa);
+    print(&va);
+    print(&v[0..2]);
+    print(&a[2..]);
+    print(&sa[1..3]);
+}
+fn print(n: &[f64]) {
+    for elt in n {
+        println!("{}", elt);
+    }
+}

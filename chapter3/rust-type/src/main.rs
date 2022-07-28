@@ -1,7 +1,17 @@
+use regex::Regex;
+
+
 fn main() {
     println!("Hello, world!");
 
     slice();
+    
+    // raw string
+    println!(r###"
+        This raw string start with 'r###"'.
+        Therefore is does not end until we reach a quote mark ('"'")
+        followed immediately by three pound signs ('###'):
+    "###);
 }
 
 #[test]
@@ -118,4 +128,30 @@ fn print(n: &[f64]) {
     for elt in n {
         println!("{}", elt);
     }
+}
+
+#[test]
+fn test_string() {
+    let _speech = "Ouch! said the well.\n";
+
+    println!("In the room the women come and go, 
+                Singing of Mount Abora");
+
+    assert_eq!("It was a bright, cold day in April, and \
+            there were four of us-\
+            more or less.", 
+            "It was a bright, cold day in April, and there were four of us-more or less.");
+
+    // raw string
+    let _default_win_install_path = r"c:\Program Files";
+
+    let pattern = Regex::new(r"\d+(.\.d+)*").unwrap();
+    assert_eq!(pattern.is_match("123-4567"), true);
+
+}
+
+#[test]
+fn test_byte_str() {
+    let method = b"GET";
+    assert_eq!(method, &[b'G', b'E', b'T']);
 }

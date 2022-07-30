@@ -101,19 +101,20 @@ fn render(pixels: &mut [u8],
 
 extern crate image;
 use image::ColorType;
-use image::png::PNGEncoder;
+use image::png::PngEncoder;
+use image::error::ImageError;
 use std::fs::File;
 
 fn write_image(filename: &str, pixels: &[u8], bounds: (usize, usize))
-    -> Result<(), std::io::Error>
+    -> Result<(), ImageError>
 {
 
-    let output = File::create(filename)?;
+    let output = File::create(filename).expect("create file error.");
 
-    let encoder = PNGEncoder::new(output);
+    let encoder = PngEncoder::new(output);
     encoder.encode(&pixels,
                     bounds.0 as u32, bounds.1 as u32,
-                    ColorType::Gray(8))?;
+                    ColorType::L8)?;
 
     Ok(())
 }
@@ -147,5 +148,6 @@ fn main() {
 
     write_image(&args[1], &pixels, bounds)
             .expect("error writing PNG file");
+    
 
 }

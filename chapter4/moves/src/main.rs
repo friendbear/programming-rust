@@ -1,5 +1,16 @@
 use std::ops::{RangeTo, Range};
 
+#[derive(Copy, Clone)]
+struct Label { number: u32 }
+
+/// Copy traitを実装できない、 nameフィールドは Copyを実装していない
+//#[derive(Copy, Clone)]
+//struct StringLabel{ name: String }
+
+fn print(l: Label) {
+    println!("STAMP: {}", l.number);
+}
+
 fn main() {
     let s = vec!["udon".to_string(), "ramen".to_string(), "soba".to_string()];
     let t = s; // value moved here
@@ -18,6 +29,11 @@ fn main() {
     let str_v = create_string_vec(Range{ start: 101, end: 1005});
     let filter: Vec<&String> = str_v.iter().filter(|x| x.ends_with("5")).collect();
     println!("{:?}", filter);
+
+    // Copy Type
+    let l = Label { number: 5};
+    print(l);
+    println!("STAMP: {}", l.number);
 
 
 }

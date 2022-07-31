@@ -31,3 +31,42 @@ fn sort_works(table: &mut Table) {
         works.sort()
     }
 }
+
+#[test]
+fn test_value_reference() {
+    let x = 10;
+    let r = &x;
+    assert_eq!(*r, 10);
+
+    let mut y = 32;
+    let m = &mut y;
+    *m += 32;
+    assert_eq!(*m, 64);
+
+    struct Anime {name: &'static str, bechdel_pass: bool };
+    let aria = Anime { name: "Aria The Animation", bechdel_pass: true };
+    let anime_ref = &aria;
+    assert_eq!(anime_ref.name, "Aria The Animation");
+    assert_eq!((*anime_ref).name, "Aria The Animation");
+}
+
+#[test]
+fn test_refelence1() {
+    let x = 10;
+    let y = 20;
+    let mut r = &x;
+    if true { r = &y }
+
+    assert!(*r == 10 || *r == 20);
+
+    let xx = &r;
+    let xxx = &xx;
+    assert_eq!(***xxx, 20);
+
+    struct Point {x: i32, y: i32 };
+    let point = Point {x: 10, y: 20};
+    let rr = &&point;
+    assert_eq!(rr.x, 10)
+
+}
+

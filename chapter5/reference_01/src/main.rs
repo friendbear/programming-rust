@@ -107,3 +107,20 @@ fn test_struct_in_reference() {
         assert_eq!(*s.r, 10);
     }
 }
+
+struct S2<'a, 'b> {
+    x: &'a i32,
+    y: &'b i32
+}
+
+#[test]
+fn test_lifetime_two(){
+    fn f<'a, 'b>(r: &'a i32, s: &'b i32) -> &'a i32 {
+        r
+    }
+    let a = 10;
+    {
+        let b = 20;
+        assert_eq!(f(&a, &b), &10);
+    }
+}

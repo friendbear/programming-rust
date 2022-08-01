@@ -70,3 +70,40 @@ fn test_refelence1() {
 
 }
 
+fn smallest(v: &[i32]) -> &i32 {
+    let mut s = &v[0];
+    for r in &v[1..] {
+        if *r < *s { s = r }
+    }
+    s
+}
+
+#[test]
+fn test_smallest() {
+    let s;
+    {
+        let paradola = [9, 4, 1, 0, 1, 4, 9];
+        s = smallest(&paradola);
+        assert_eq!(*s, 0)
+    }
+    //asseert_eq!(*s, 0)
+}
+
+struct S<'a>{
+    r: &'a i32
+}
+
+struct T<'a> {
+    s: S<'a>
+}
+
+#[test]
+fn test_struct_in_reference() {
+
+    let s;
+    {
+        let x = 10;
+        s = S { r: &x };
+        assert_eq!(*s.r, 10);
+    }
+}

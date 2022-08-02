@@ -6,7 +6,7 @@ fn main() {
             None => ""
         });
 
-    let post_blogs = vec![
+    let blog_posts = vec![
                     Post { name: Some("moyashi".to_string()),
                               ip_addr: "localhost".to_string(),
                               metadata: Some("high".to_string())
@@ -24,7 +24,7 @@ fn main() {
                               metadata: Some("Out of Range".to_string())
                             },
                 ];
-    for post in post_blogs {
+    for post in blog_posts {
         let display_name = match post.name {
             Some(author) => author,
             None => 
@@ -81,3 +81,20 @@ impl User {
     fn nickname(&self) -> Option<String> { self.nickname.to_owned() }
     pub fn generate_unique_name() -> String { String::from(nanoid!(8)) }
 }
+
+/*
+use std::io;
+use std::fs::FileInfo;
+use std::cmp::Ordering;
+
+fn show_files() -> io::Result<()> {
+    let mut v = vec![];
+
+    fn cmp_by_time_stamp_then_name(a: &FileInfo, b: &FileInfo) -> Ordering {
+        a.timestamp.cmp(&b.timestamp)
+            .reverse()
+            .then(a.path.cmp(&b.path))
+    }
+    v.sort_by(cmp_by_time_stamp_then_name);
+    Ok(())
+} */

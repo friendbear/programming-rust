@@ -33,6 +33,23 @@ fn main() {
         println!("blog_post_display_name: {:?}", display_name);
     }
 
+    // definition
+
+    let mut users: Vec<User>= vec![];
+    for i in 0..100 {
+        let s = User { name: User::generate_unique_name(), nickname: None };
+        users.push(s)
+    }
+    users[50].nickname = Some("tomo".to_string());
+
+    for i in 0..users.len() {
+        if let Some(_n) = &users[i].nickname {
+            println!("nickname: {:?}", users[i].nickname);
+        } else {
+            println!("{:?}", users[i]);
+        }
+    }
+
 }
 
 struct Post {
@@ -51,4 +68,16 @@ impl Post {
     fn client_address(&self) -> &str {
         &self.ip_addr
     }
+}
+
+use nanoid::nanoid;
+
+#[derive(Debug)]
+struct User{
+    name: String,
+    nickname: Option<String>
+}
+impl User {
+    fn nickname(&self) -> Option<String> { self.nickname.to_owned() }
+    pub fn generate_unique_name() -> String { String::from(nanoid!(8)) }
 }

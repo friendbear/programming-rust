@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["overlap","Return true if two ranges overlap."]]});

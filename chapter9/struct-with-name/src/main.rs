@@ -1,4 +1,5 @@
 mod impl_function;
+mod lifetime_struct;
 
 // 名前付きフィールド構造体
 #[derive(Debug, Clone)]

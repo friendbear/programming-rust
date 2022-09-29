@@ -12,5 +12,18 @@ fn main() {
 
     let mut bytes = vec![];
     say_hello(&mut bytes).unwrap();
-    assert_eq!(bytes, b"hello world\n")
+    assert_eq!(bytes, b"hello world\n");
+
+    trait_object().unwrap()
+}
+
+// reference of trait
+fn trait_object() -> std::io::Result<()> {
+    let mut buf: Vec<u8> = vec![];
+    let writer: &mut dyn Write = &mut buf;
+
+    writer.write_all(b"hello world\n")?;
+    writer.flush()?;
+    println!("{:?}", buf);
+    Ok(())
 }

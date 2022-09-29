@@ -14,7 +14,11 @@ fn main() {
     say_hello(&mut bytes).unwrap();
     assert_eq!(bytes, b"hello world\n");
 
-    trait_object().unwrap()
+    trait_object().unwrap();
+    
+    let mut bytes = vec![];
+    say_hi::<Vec<u8>>(&mut bytes).unwrap();
+    assert_eq!(bytes, b"hi\n");
 }
 
 // reference of trait
@@ -26,4 +30,10 @@ fn trait_object() -> std::io::Result<()> {
     writer.flush()?;
     println!("{:?}", buf);
     Ok(())
+}
+
+// genelics function
+fn say_hi<W: Write>(out: &mut W) -> std::io::Result<()>{
+    out.write_all(b"hi\n")?;
+    out.flush()
 }

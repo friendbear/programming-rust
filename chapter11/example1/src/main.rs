@@ -1,4 +1,6 @@
 use std::io::Write;
+use std::fmt::Debug;
+use std::hash::Hash;
 
 fn say_hello(out: &mut dyn Write) -> std::io::Result<()> {
     out.write_all(b"hello world\n")?;
@@ -47,4 +49,15 @@ fn say_hi<W: Write>(out: &mut W) -> std::io::Result<()>{
 fn applender<W: Write>(out: &mut W, s: &str) -> std::io::Result<()> {
     out.write_all(s.as_bytes())?;
     out.flush()
+}
+
+// where type
+fn top_ten<T: Debug + Hash + Eq>(values: &Vec<T>) {
+    todo!()
+}
+
+fn top_twenty<T: Debug + Hash + Eq>(values: &Vec<T>)
+    where T: Debug + Hash + Eq
+{
+    todo!()
 }

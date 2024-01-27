@@ -1,0 +1,14 @@
+[workspace]
+resolver = "2"
+members = [
+    "chapter1/*",
+    "chapter2/*",
+    "chapter3/*",
+    "chapter4/*",
+    "chapter5/*",
+    "chapter6/*",
+    "chapter8/*",
+    "chapter9/*",
+    "chapter11/*"
+]
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

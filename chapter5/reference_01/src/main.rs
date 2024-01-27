@@ -3,15 +3,27 @@ type Table = HashMap<String, Vec<String>>;
 fn main() {
     println!("Hello, world!");
     let mut table = Table::new();
-    table.insert("Cesualdo".to_string(),
-                vec!["Tenebrae Responsoria".to_string(),
-                        "many madrigals".to_string()]);
-    table.insert("Caravaggio".to_string(),
-                vec!["The Musicians".to_string(),
-                        "The Calling of St. Matthew".to_string()]);
-    table.insert("Cellini".to_string(),
-                vec!["Perseus with the head of Medusa".to_string(),
-                        "a salt cellar".to_string()]);
+    table.insert(
+        "Cesualdo".to_string(),
+        vec![
+            "Tenebrae Responsoria".to_string(),
+            "many madrigals".to_string(),
+        ],
+    );
+    table.insert(
+        "Caravaggio".to_string(),
+        vec![
+            "The Musicians".to_string(),
+            "The Calling of St. Matthew".to_string(),
+        ],
+    );
+    table.insert(
+        "Cellini".to_string(),
+        vec![
+            "Perseus with the head of Medusa".to_string(),
+            "a salt cellar".to_string(),
+        ],
+    );
 
     sort_works(&mut table);
     show(&table);
@@ -43,8 +55,14 @@ fn test_value_reference() {
     *m += 32;
     assert_eq!(*m, 64);
 
-    struct Anime {name: &'static str, bechdel_pass: bool };
-    let aria = Anime { name: "Aria The Animation", bechdel_pass: true };
+    struct Anime {
+        name: &'static str,
+        bechdel_pass: bool,
+    };
+    let aria = Anime {
+        name: "Aria The Animation",
+        bechdel_pass: true,
+    };
     let anime_ref = &aria;
     assert_eq!(anime_ref.name, "Aria The Animation");
     assert_eq!((*anime_ref).name, "Aria The Animation");
@@ -55,7 +73,9 @@ fn test_refelence1() {
     let x = 10;
     let y = 20;
     let mut r = &x;
-    if true { r = &y }
+    if true {
+        r = &y
+    }
 
     assert!(*r == 10 || *r == 20);
 
@@ -63,17 +83,21 @@ fn test_refelence1() {
     let xxx = &xx;
     assert_eq!(***xxx, 20);
 
-    struct Point {x: i32, y: i32 };
-    let point = Point {x: 10, y: 20};
+    struct Point {
+        x: i32,
+        y: i32,
+    };
+    let point = Point { x: 10, y: 20 };
     let rr = &&point;
     assert_eq!(rr.x, 10)
-
 }
 
 fn smallest(v: &[i32]) -> &i32 {
     let mut s = &v[0];
     for r in &v[1..] {
-        if *r < *s { s = r }
+        if *r < *s {
+            s = r
+        }
     }
     s
 }
@@ -89,17 +113,16 @@ fn test_smallest() {
     //asseert_eq!(*s, 0)
 }
 
-struct S<'a>{
-    r: &'a i32
+struct S<'a> {
+    r: &'a i32,
 }
 
 struct T<'a> {
-    s: S<'a>
+    s: S<'a>,
 }
 
 #[test]
 fn test_struct_in_reference() {
-
     let s;
     {
         let x = 10;
@@ -110,11 +133,11 @@ fn test_struct_in_reference() {
 
 struct S2<'a, 'b> {
     x: &'a i32,
-    y: &'b i32
+    y: &'b i32,
 }
 
 #[test]
-fn test_lifetime_two(){
+fn test_lifetime_two() {
     fn f<'a, 'b>(r: &'a i32, s: &'b i32) -> &'a i32 {
         r
     }

@@ -1,21 +1,22 @@
 use regex::Regex;
 
-
 fn main() {
     println!("Hello, world!");
 
     slice();
-    
+
     // raw string
-    println!(r###"
+    println!(
+        r###"
         This raw string start with 'r###"'.
         Therefore is does not end until we reach a quote mark ('"'")
         followed immediately by three pound signs ('###'):
-    "###);
+    "###
+    );
 }
 
 #[test]
-fn test_basic_type(){
+fn test_basic_type() {
     assert_eq!(5f32.sqrt() * 5f32.sqrt(), 5.);
     assert_eq!((-1.01f64).floor(), -2.0);
     assert!((-1. / std::f32::INFINITY).is_sign_negative());
@@ -25,12 +26,13 @@ fn test_basic_type(){
     /// 真偽値型
     assert_eq!(false as i32, 0);
     assert_eq!(true as i32, 1);
-
 }
 
 #[test]
 fn test_tuple() {
     let text = "I see the eigenvalue in thine eye";
+
+    /// &str sprit index 21
     let (head, tail) = text.split_at(21);
     assert_eq!(head, "I see the eigenvalue ");
     assert_eq!(tail, "in thine eye");
@@ -61,13 +63,11 @@ fn test_vec() {
     v.push(1);
     assert_eq!(v.iter().fold(1, |a, b| a * b), 210);
 
-
     fn new_pixel_buffer(row: usize, cols: usize) -> Vec<u8> {
         vec![0; row * cols]
     }
 
     assert_eq!(new_pixel_buffer(10, 10).len(), 100);
-
 
     let mut v = Vec::new();
     v.push("step");
@@ -106,12 +106,11 @@ fn test_vec() {
     assert_eq!(v.pop(), Some("miranda"));
     assert_eq!(v.pop(), Some("carmen"));
     assert_eq!(v.pop(), None);
-
 }
 
 fn slice() {
     let v = vec![0.0, 0.707, 1.0, 0.707];
-    let a: [f64; 4] =     [0.0, 0.707, 1.0, 0.707];
+    let a: [f64; 4] = [0.0, 0.707, 1.0, 0.707];
 
     let sa: &[f64] = &v;
     let va: &[f64] = &a;
@@ -134,20 +133,23 @@ fn print(n: &[f64]) {
 fn test_string() {
     let _speech = "Ouch! said the well.\n";
 
-    println!("In the room the women come and go, 
-                Singing of Mount Abora");
+    println!(
+        "In the room the women come and go, 
+                Singing of Mount Abora"
+    );
 
-    assert_eq!("It was a bright, cold day in April, and \
+    assert_eq!(
+        "It was a bright, cold day in April, and \
             there were four of us-\
-            more or less.", 
-            "It was a bright, cold day in April, and there were four of us-more or less.");
+            more or less.",
+        "It was a bright, cold day in April, and there were four of us-more or less."
+    );
 
     // raw string
     let _default_win_install_path = r"c:\Program Files";
 
     let pattern = Regex::new(r"\d+(.\.d+)*").unwrap();
     assert_eq!(pattern.is_match("123-4567"), true);
-
 }
 
 #[test]
@@ -166,7 +168,6 @@ fn test_str_string() {
     assert_eq!(s.chars().count(), 4);
 
     assert_eq!(format!("{} {:02}' {:02} N", 24, 5, 23,), "24 05' 23 N");
-
 }
 
 #[test]
@@ -178,7 +179,6 @@ fn test_use_string() {
     assert_eq!("    str".trim(), "str");
 
     for word in "veni, vidi, vici".split(", ") {
-        
         assert!(word.starts_with("v"));
     }
 }

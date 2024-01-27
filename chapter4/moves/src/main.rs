@@ -1,7 +1,9 @@
-use std::ops::{RangeTo, Range};
+use std::ops::{Range, RangeTo};
 
 #[derive(Copy, Clone)]
-struct Label { number: u32 }
+struct Label {
+    number: u32,
+}
 
 /// Copy traitを実装できない、 nameフィールドは Copyを実装していない
 //#[derive(Copy, Clone)]
@@ -14,7 +16,7 @@ fn print(l: Label) {
 fn main() {
     let s = vec!["udon".to_string(), "ramen".to_string(), "soba".to_string()];
     let t = s; // value moved here
-    //let u = s;  // value used here after move
+               //let u = s;  // value used here after move
 
     // 明示的にコピーがほしいことを要求する .clone();
     let s1 = vec!["udon".to_string(), "ramen".to_string(), "soba".to_string()];
@@ -26,21 +28,24 @@ fn main() {
 
     move_and_flow_controll();
 
-    let str_v = create_string_vec(Range{ start: 101, end: 1005});
+    let str_v = create_string_vec(Range {
+        start: 101,
+        end: 1005,
+    });
     let filter: Vec<&String> = str_v.iter().filter(|x| x.ends_with("5")).collect();
     println!("{:?}", filter);
 
     // Copy Type
-    let l = Label { number: 5};
+    let l = Label { number: 5 };
     print(l);
     println!("STAMP: {}", l.number);
-
-
 }
 #[test]
 fn test_move_string() {
-
-    let mut str_101_to_105 = create_string_vec(Range{ start: 101, end: 105});
+    let mut str_101_to_105 = create_string_vec(Range {
+        start: 101,
+        end: 105,
+    });
 
     assert_eq!(str_101_to_105.len(), 5);
     // 1. Pop avalue off the end of the vector:
@@ -82,14 +87,20 @@ fn _move_and_flow_contloll2() {
         x = h();
     }
 
-    fn f() -> bool { false }
-    fn g(_v: Vec<i32>) {todo!();}
-    fn h() -> Vec<i32> {todo!();}
+    fn f() -> bool {
+        false
+    }
+    fn g(_v: Vec<i32>) {
+        todo!();
+    }
+    fn h() -> Vec<i32> {
+        todo!();
+    }
 }
 
 fn create_string_vec(range: Range<u32>) -> Vec<String> {
     let mut v = Vec::new();
-    for i in range.start..range.end+1 {
+    for i in range.start..range.end + 1 {
         v.push(i.to_string())
     }
     v

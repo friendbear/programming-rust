@@ -11,7 +11,7 @@ fn math_works() {
 
 /// panic test
 #[test]
-#[should_panic(expected="divide by zero")] 
+#[should_panic(expected = "divide by zero")]
 fn divide_by_zero() {
     let y = 0;
     let _ = 1 / y;
@@ -29,4 +29,3 @@ mod tests {
         assert!(roughly_equal(PI.sin(), 0.0));
     }
 }
-

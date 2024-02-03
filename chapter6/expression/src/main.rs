@@ -47,7 +47,7 @@ fn main() {
     // definition
     let mut rng = rand::thread_rng();
     let mut users: Vec<User> = vec![];
-    for i in 0..100 {
+    for _ in 0..100 {
         let num: u8 = rng.gen_range(0..3);
         let s = User {
             name: User::generate_unique_name(),

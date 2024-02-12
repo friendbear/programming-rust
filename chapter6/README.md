@@ -46,10 +46,14 @@ fn std::process::exit() -> !
 > [!Tips]
 > 自動変換
 
-
 * 型&Stringの型は、&str型にキャスト無しでキャストされる
 * 型&Vec<i32>の値は&[i32]に自動変換される
 * &Box<Chessboard> の値は、&Chessboardに自動変換される
 
+## 6.14 クロージャ
 
+軽量な関数のような値、Closure
 
+```rust
+let sum = |x, y| -> x + y;
+```

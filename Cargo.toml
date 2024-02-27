@@ -10,5 +10,5 @@ members = [
     "chapter8/*",
     "chapter9/*",
     "chapter11/*"
-]
+, "chapter12"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

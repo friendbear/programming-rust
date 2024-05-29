@@ -17,7 +17,7 @@ fn main() {
 fn test_basic_type() {
     assert_eq!(5f32.sqrt() * 5f32.sqrt(), 5.);
     assert_eq!((-1.01f64).floor(), -2.0);
-    assert!((-1. / std::f32::INFINITY).is_sign_negative());
+    assert!((-1. / f32::INFINITY).is_sign_negative());
 
     assert_eq!((2.0_f64).sqrt(), f64::sqrt(2.0));
 
@@ -28,14 +28,10 @@ fn test_basic_type() {
 }
 
 #[test]
-/*
-* 
-*
-*/
 fn test_tuple() {
     let text = "I see the eigenvalue in thine eye";
 
-    /// &str sprit index 21
+    // &str sprit index 21
     let (head, tail) = text.split_at(21);
     assert_eq!(head, "I see the eigenvalue ");
     assert_eq!(tail, "in thine eye");
@@ -151,7 +147,7 @@ fn test_string() {
     let _default_win_install_path = r"c:\Program Files";
 
     let pattern = Regex::new(r"\d+(.\.d+)*").unwrap();
-    assert_eq!(pattern.is_match("123-4567"), true);
+    assert!(pattern.is_match("123-4567"));
 
 }
 

@@ -1,5 +1,3 @@
-extern crate num;
-
 use num::Complex;
 
 fn _complex_squre_add_loop(c: Complex<f64>) {
@@ -107,7 +105,6 @@ fn render(
     }
 }
 
-extern crate image;
 use image::error::ImageError;
 use image::png::PngEncoder;
 use image::ColorType;

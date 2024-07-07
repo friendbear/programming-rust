@@ -252,7 +252,7 @@ dependencies = [
  "httparse",
  "language-tags",
  "log 0.3.9",
- "mime",
+ "mime 0.2.6",
  "num_cpus",
  "time",
  "traitobject",
@@ -411,12 +411,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "mime"
+version = "0.3.17"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6877bb514081ee2a7ff5ef9de3281f14a4dd4bceac4c09388074a6b5df8a139a"
+
+[[package]]
 name = "mime_guess"
 version = "1.8.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "216929a5ee4dd316b1702eedf5e74548c123d370f47841ceaac38ca154690ca3"
 dependencies = [
- "mime",
+ "mime 0.2.6",
  "phf",
  "phf_codegen",
  "unicase",
@@ -982,7 +988,7 @@ name = "tour25-iron-gcd"
 version = "0.1.2"
 dependencies = [
  "iron 0.6.1",
- "mime",
+ "mime 0.3.17",
  "router",
  "urlencoded",
 ]

@@ -49,7 +49,7 @@ fn post_gcd(request: &mut Request) -> IronResult<Response> {
     let unparsed_numbers = match form_data.get("n") {
         None => {
             response.set_mut(status::BadRequest);
-            response.set_mut(format!("form data has no 'n' parameter\n"));
+            response.set_mut("form data has no 'n' parameter\n".to_string());
             return Ok(response);
         }
         Some(nums) => nums,

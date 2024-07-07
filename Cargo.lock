@@ -981,7 +981,7 @@ version = "0.0.0"
 name = "tour25-iron-gcd"
 version = "0.1.2"
 dependencies = [
- "iron 0.5.1",
+ "iron 0.6.1",
  "mime",
  "router",
  "urlencoded",

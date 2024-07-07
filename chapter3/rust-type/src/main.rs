@@ -19,7 +19,7 @@ fn main() {
 fn test_basic_type() {
     assert_eq!(5f32.sqrt() * 5f32.sqrt(), 5.);
     assert_eq!((-1.01f64).floor(), -2.0);
-    assert!((-1. / std::f32::INFINITY).is_sign_negative());
+    assert!((-1. / f32::INFINITY).is_sign_negative());
 
     assert_eq!((2.0_f64).sqrt(), f64::sqrt(2.0));
 

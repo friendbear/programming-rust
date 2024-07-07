@@ -10,6 +10,7 @@ use std::fs::File;
 use std::str::Bytes;
 fn main() {
     let mut local_file = File::create("hello.txt").unwrap();
+
     local_file.write_all(b"hello world\n").unwrap();
     //    say_hello(&local_file).unwrap();
 

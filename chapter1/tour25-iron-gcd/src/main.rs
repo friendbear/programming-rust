@@ -1,6 +1,3 @@
-extern crate iron;
-extern crate router;
-extern crate urlencoded;
 use iron::mime::*;
 use iron::prelude::*;
 use iron::status;
@@ -17,7 +14,9 @@ fn main() {
     println!("Serving on http://localhost:3000...");
     Iron::new(router).http("localhost:3000").unwrap();
 }
-fn get_form(_request: &mut Request) -> IronResult<Response> {
+
+
+pub(crate) fn get_form(_request: &mut Request) -> IronResult<Response> {
     let mut response = Response::new();
     response.set_mut(status::Ok);
     response.set_mut(mime!(Text/Html; Charset=Utf8)); // set content type to text/html  with utf8 encoding

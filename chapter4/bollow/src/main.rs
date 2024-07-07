@@ -36,6 +36,6 @@ fn print_padovan() {
 #[test]
 fn test_box_drop() {
     let point = Box::new((0.625, 0.5)); //point allocated here
-    let label = format!("{:?}", point);
+    let label = format!("{:?}", &point);
     assert_eq!(label, "(0.625, 0.5)")
 } // both dropped here

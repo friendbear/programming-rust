@@ -20,6 +20,8 @@ fn main() {
     for u in v {
         const CHARSET: &str = "abcdefghijklmnopqrstuvwxyz1234567890_!?=<>";
         let vec = CHARSET.chars().collect::<Vec<_>>();
+        let n = u.firstname.chars().collect::<Vec<_>>();
+        println!("{:?}", n);
 
         // TODO: if for contains char
         #[warn(clippy::let_unit_value)]

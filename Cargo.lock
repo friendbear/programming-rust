@@ -89,6 +89,10 @@ name = "chapter12"
 version = "0.1.0"
 
 [[package]]
+name = "chapter13"
+version = "0.1.0"
+
+[[package]]
 name = "color_quant"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -755,15 +759,15 @@ checksum = "1f3ccbac311fea05f86f61904b462b55fb3df8837a366dfc601a0161d0532f20"
 
 [[package]]
 name = "tour01"
-version = "0.1.0"
+version = "0.1.2"
 
 [[package]]
 name = "tour24"
-version = "0.1.0"
+version = "0.0.0"
 
 [[package]]
 name = "tour25-iron-gcd"
-version = "0.1.0"
+version = "0.1.2"
 dependencies = [
  "iron",
  "mime",

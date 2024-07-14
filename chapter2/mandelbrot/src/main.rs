@@ -12,7 +12,7 @@ fn escape_time(c: Complex<f64>, limit: u32) -> Option<u32> {
     for i in 0..limit {
         z = z * z + c;
         if z.norm_sqr() > 4.0 {
-            return Some(i);
+            return Some(1)
         }
     }
     None
@@ -40,10 +40,7 @@ fn test_parse_pair() {
 }
 
 fn parse_complex(s: &str) -> Option<Complex<f64>> {
-    match parse_pair(s, ',') {
-        Some((re, im)) => Some(Complex { re, im }),
-        None => None,
-    }
+    parse_pair(s, ',').map(|(re, im)| Complex { re, im })
 }
 #[test]
 fn test_parse_complex() {
@@ -114,28 +111,19 @@ fn write_image(filename: &str, pixels: &[u8], bounds: (usize, usize)) -> Result<
     let output = File::create(filename).expect("create file error.");
 
     let encoder = PngEncoder::new(output);
-    encoder.encode(&pixels, bounds.0 as u32, bounds.1 as u32, ColorType::L8)?;
+    encoder.encode(pixels, bounds.0 as u32, bounds.1 as u32, ColorType::L8)?;
 
     Ok(())
 }
 
-use std::io::Write;
 
 fn main() {
     let args: Vec<String> = std::env::args().collect();
 
     if args.len() != 5 {
-        writeln!(
-            std::io::stderr(),
-            "Usage: mandelbrot FILE PIXELS UPPERLEFT LOWERRLIGHT"
-        )
-        .unwrap();
-        writeln!(
-            std::io::stderr(),
-            "Example: {} mandel.png 1000x750 -1.20,0.35 -1,0.20",
-            args[0]
-        )
-        .unwrap();
+        eprintln!("Usage: mandelbrot FILE PIXELS UPPERLEFT LOWERRLIGHT");
+        eprintln!("Example: {} mandel.png 1000x750 -1.20,0.35 -1,0.20",
+            args[0]);
         std::process::exit(1);
     }
 

@@ -4,10 +4,7 @@ fn main() {
     let s = Some("Hello, world!");
     println!(
         "If s match Some: {}.",
-        match s {
-            Some(s) => s,
-            None => "",
-        }
+        s.unwrap_or_default()
     );
 
     let blog_posts = vec![
@@ -104,7 +101,7 @@ impl User {
         self.nickname.to_owned()
     }
     pub fn generate_unique_name() -> String {
-        String::from(nanoid!(8))
+        nanoid!(8)
     }
 }
 

@@ -1,4 +1,3 @@
-use regex::Regex;
 
 fn main() {
     println!("Hello, world!");
@@ -121,8 +120,8 @@ fn slice() {
 
     print(&v);
     print(&a);
-    print(&sa);
-    print(&va);
+    print(sa);
+    print(va);
     print(&v[0..2]);
     print(&a[2..]);
     print(&sa[1..3]);

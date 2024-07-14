@@ -9,7 +9,7 @@ impl std::ops::Drop for Application {
         if !self.nickname.is_empty() {
             print!("(AKA{})", self.nickname.join(", "))
         }
-        println!("");
+        println!();
     }
 }
 

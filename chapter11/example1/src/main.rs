@@ -7,7 +7,6 @@ fn say_hello(out: &mut dyn Write) -> std::io::Result<()> {
     out.flush()
 }
 use std::fs::File;
-use std::str::Bytes;
 fn main() {
     let mut local_file = File::create("hello.txt").unwrap();
 

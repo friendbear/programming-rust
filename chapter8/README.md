@@ -92,3 +92,114 @@ stdは含まれていないので、stdを使うには以下のように明示�
 
 ただし、普通はstdの特定の利用する機能だけインポートした方が良いだろう。
 
+
+### #[cfg()]
+
+#[cfg]の完全な構文リストはRust言語仕様 <https://doc.rust-lang.org/reference.html#conditional-cocmplication>にある。
+
+| #![cfg()] | 意味 |
+| --- | --- |
+| test | テストモードでのみコンパイル (--testでコンパイルされた時)|
+| debug_assertions | デバッグアサーションが有効な時のみコンパイル |
+| unix| macOS, Linux, FreeBSD, などのUnix系OSでのみコンパイル |
+| windows | Windowsでのみコンパイル |
+| target_pointer_width = "32" | ターゲットのポインタ幅が32ビットの時のみコンパイル |
+| target_arch = "x86_64" | ターゲットのアーキテクチャ |
+| target_os = "linux" | ターゲットのOS |
+| feature = "foo" | fooという機能が有効な時のみコンパイル |
+| not(foo) | fooが有効でない時のみコンパイル |
+| all(foo, bar) | fooとbarが有効な時のみコンパイル |
+| any(foo, bar) | fooかbarが有効な時のみコンパイル |
+
+#### #[inline]
+
+* #[inline(always)] その関数を常にインライン展開する
+* #[inline(never)] その関数をインライン展開しない
+
+> [!Tips]
+> #[cfg]や#[allow]などの一部の属性は、モジュール全体に付加して、その中のすべてのアイテムに適用することができる。
+> #[test]や#[inline]などは、個々のアイテム毎につけなければならない。
+
+属性をクレート全体に付与するには、main.rsファイルもしくはlib.rsファイルの先頭に書く。
+この際、#ではなく#!を用いる。
+
+
+```rust
+#[allow(non_camel_case_types)]
+pub struct git_revspec {
+    ...
+}
+pub struct git_commit {
+    ...
+}
+```
+#!は属性を次のアイテムに付与するのではなく、その行を包含する相手に対して付与することを意味する。
+上のケースでは、git_revspecとgit_commitの両方にnon_camel_case_types属性が付与される。
+
+### テストとドキュメント
+
+#### 結合テスト
+
+結合テストは、モジュールの外部インターフェースをテストするためのテストである。
+
+
+#### ドキュメント
+
+cargo doc usages
+```bash
+cargo doc --nno-deps --open
+```
+
+ドキュメントは、ライブラリのpubの付いたものと、それにつけたドキュメントコメントもしくはドクコメントから生成される。
+
+３つのスラッシュで始まるコメントは、コンパイラによって#[doc]属性として解釈される。
+
+#### バージョン
+
+Semantic Versioning 2.0.0 <https://semver.org/> から採用されている。
+
+#### Cargo.lock
+
+Cargoが新しいバージョンに切り替えるのは、明示的に指示された場合、つまりユーザがCargo .tomlファイルを変更した場合と、
+cargo updateコマンドを実行した場合のみである。
+
+```toml
+image = { git = "https://github.com/Piston/image.git", branch = "master" }
+```
+
+### クレートの公開 crate.io
+
+クレートを公開するには、crates.ioに登録する必要がある。crates.ioに登録するには、crates.ioのアカウントを作成し、
+cargo loginコマンドでログインする。
+
+```bash
+cargo login
+```
+
+cargo packageコマンドで、クレートをパッケージ化する。
+
+```bash
+
+cargo package
+```
+
+cargo publishコマンドで、クレートを公開する。
+
+```bash
+cargo publish
+```
+
+### ワークスペース
+
+プロジェクトが成長するにつれ、多くのクレートが必要になることがある。このような場合、Cargoのワークスペース機能を使うと、
+複数のクレートを一つのプロジェクトとして管理することができる。
+
+ワークスペースは、Cargo.tomlファイルの[workspace]セクションで定義される。
+
+```toml
+members = [
+    "foo",
+    "bar",
+    "baz",
+]
+```

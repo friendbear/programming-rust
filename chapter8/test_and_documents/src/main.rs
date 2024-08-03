@@ -1,3 +1,5 @@
+/// テストとドキュメント
+
 fn main() {
     println!("Hello, world!");
 }

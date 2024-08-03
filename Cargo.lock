@@ -312,6 +312,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "fern_sim"
+version = "0.1.1"
+
+[[package]]
 name = "flate2"
 version = "1.0.30"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -675,10 +679,6 @@ name = "modifier"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "41f5c9112cb662acd3b204077e0de5bc66305fa8df65c8019d5adb10e9ab6e58"
-
-[[package]]
-name = "module_fern_sim"
-version = "0.1.0"
 
 [[package]]
 name = "moves"

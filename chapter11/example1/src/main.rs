@@ -51,8 +51,9 @@ fn applender<W: Write>(out: &mut W, s: &str) -> std::io::Result<()> {
     out.flush()
 }
 
+/// .
 // where type
-fn top_ten<T: Debug + Hash + Eq>(values: &Vec<T>) {
+fn _top_ten<T: Debug + Hash + Eq>(_values: &Vec<T>) {
     todo!()
 }
 

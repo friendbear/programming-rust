@@ -1,6 +1,3 @@
-use regex::Regex;
-
-
 fn main() {
     println!("Hello, world!");
 
@@ -30,10 +27,7 @@ fn test_basic_type() {
 }
 
 #[test]
-/*
-*
-*
-*/
+/// tuple test
 fn test_tuple() {
     let text = "I see the eigenvalue in thine eye";
 
@@ -139,7 +133,7 @@ fn test_string() {
     let _speech = "Ouch! said the well.\n";
 
     println!(
-        "In the room the women come and go, 
+        "In the room the women come and go,
                 Singing of Mount Abora"
     );
 

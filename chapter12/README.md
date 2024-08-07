@@ -3,7 +3,6 @@
 ## 12.1 演算子のオーバーロードまとめ
 
 ```rust
-
 std::opt::Neg // -x
 std::opt::Not // !x
 std::opt::Add // x + y
@@ -17,7 +16,6 @@ std::opt::Sub // x - y
 ## 12.2 等価性テスト
 
 ```rust
-
 trait PartialEq<Rhs: ?Sized = Self> {
     fn eq(&self, other: &Rhs) -> bool,
     fn ne(&self, other: &Rhs) -> bool { !self.eq(other) }

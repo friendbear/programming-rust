@@ -57,7 +57,7 @@ fn _top_ten<T: Debug + Hash + Eq>(_values: &Vec<T>) {
     todo!()
 }
 
-fn top_twenty<T: Debug + Hash + Eq>(values: &Vec<T>)
+fn _top_twenty<T: Debug + Hash + Eq>(_values: &Vec<T>)
 where
     T: Debug + Hash + Eq,
 {

@@ -12,7 +12,7 @@ fn escape_time(c: Complex<f64>, limit: u32) -> Option<u32> {
     for i in 0..limit {
         z = z * z + c;
         if z.norm_sqr() > 4.0 {
-            return Some(1)
+            return Some(1);
         }
     }
     None
@@ -116,14 +116,15 @@ fn write_image(filename: &str, pixels: &[u8], bounds: (usize, usize)) -> Result<
     Ok(())
 }
 
-
 fn main() {
     let args: Vec<String> = std::env::args().collect();
 
     if args.len() != 5 {
         eprintln!("Usage: mandelbrot FILE PIXELS UPPERLEFT LOWERRLIGHT");
-        eprintln!("Example: {} mandel.png 1000x750 -1.20,0.35 -1,0.20",
-            args[0]);
+        eprintln!(
+            "Example: {} mandel.png 1000x750 -1.20,0.35 -1,0.20",
+            args[0]
+        );
         std::process::exit(1);
     }
 

@@ -53,3 +53,7 @@ mod error_test {
         assert!(true)
     }
 }
+
+fn main() {
+    // Add your main function code here
+}

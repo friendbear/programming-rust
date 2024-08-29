@@ -11,14 +11,19 @@ fn math_works() {
     assert!(x + 1 == 2);
 }
 
-/// panic test
+//#[test]
+//#[should_panic(expected = "divide by zero")]
+//fn divide_by_zero() {
+//    let y: i32 = 0;
+//    let _ = 1 / y;
+//}
+
 #[test]
 #[should_panic(expected = "divide by zero")]
-fn divide_by_zero() {
-    let y = 0;
+fn divide_by_zero_negative() {
+    let y: i32 = -1;
     let _ = 1 / y;
 }
-
 #[cfg(test)]
 mod tests {
     fn roughly_equal(a: f64, b: f64) -> bool {

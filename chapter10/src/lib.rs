@@ -1,4 +1,8 @@
 mod btree;
+mod pattern;
+mod pattern_at;
+mod pattern_reference;
+mod pattern_struct_and_tuple;
 
 /// HTTPステータスコードを表す列挙型
 pub enum HttpStatus {

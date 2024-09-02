@@ -26,13 +26,10 @@ fn test_owner_share() {
     assert_eq!(Rc::strong_count(&s), 1);
 }
 
-use std::sync::Arc;
-use std::sync::Mutex;
-use std::thread;
 
 #[test]
 fn test_owner_share_arc() {
-    let mut s: Arc<Mutex<String>> = Arc::new(Mutex::new("shirataki".to_string()));
+    let s: Arc<Mutex<String>> = Arc::new(Mutex::new("shirataki".to_string()));
     
     {
         let t = s.clone();

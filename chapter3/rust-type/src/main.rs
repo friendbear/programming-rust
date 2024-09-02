@@ -128,7 +128,6 @@ fn print(n: &[f64]) {
     }
 }
 
-use regex::Regex;
 
 #[test]
 fn test_string() {

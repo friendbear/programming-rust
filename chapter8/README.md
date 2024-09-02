@@ -147,7 +147,7 @@ pub struct git_commit {
 
 cargo doc usages
 ```bash
-cargo doc --no-deps --open
+cargo doc --nno-deps --open
 ```
 
 ドキュメントは、ライブラリのpubの付いたものと、それにつけたドキュメントコメントもしくはドクコメントから生成される。

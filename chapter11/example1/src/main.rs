@@ -91,8 +91,7 @@ impl Write for Sink {
 }
 
 /// seadeライブラリ
-use serde::{Deserialize, Serialize};
-use serde_json::json;
+use serde::Serialize;
 pub fn save_configuration(config: &HashMap<String, String>) -> std::io::Result<()> {
     // Create a JSON serializer to write the data to a file.
     let writer = File::create("configuration.txt")?;

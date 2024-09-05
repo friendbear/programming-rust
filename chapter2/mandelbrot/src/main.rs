@@ -103,7 +103,7 @@ fn render(
 }
 
 use image::error::ImageError;
-use image::png::PngEncoder;
+use image::codecs::png::PngEncoder;
 use image::ColorType;
 use std::fs::File;
 

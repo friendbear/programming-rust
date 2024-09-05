@@ -1,4 +1,7 @@
-pub struct Application{ 
+use std::ops::Deref;
+use std::ops::DerefMut;
+
+pub struct Application {
     pub name: String,
     pub nickname: Vec<String>,
 }
@@ -22,8 +25,6 @@ pub struct Selector<T> {
     pub current: usize,
 }
 
-use std::ops::Deref;
-use std::ops::DerefMut;
 impl<T> Deref for Selector<T> {
     type Target = T;
     fn deref(&self) -> &T {

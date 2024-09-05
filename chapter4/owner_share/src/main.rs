@@ -1,4 +1,6 @@
 use std::rc::Rc;
+use std::sync::{Arc, Mutex};
+use std::thread;
 
 fn main() {
     let s: Rc<String> = Rc::new("shirataki".to_string());

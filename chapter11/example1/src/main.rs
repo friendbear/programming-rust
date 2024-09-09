@@ -52,22 +52,7 @@ fn applender<W: Write>(out: &mut W, s: &str) -> std::io::Result<()> {
     out.flush()
 }
 
-/// Prints the top ten items in a list.
-pub fn top_ten<T>(list: &Vec<T>)
-where
-    T: Eq + Hash + Debug,
-{
-    let mut map = HashMap::new();
-    for item in list {
-        let count = map.entry(item).or_insert(0);
-        *count += 1;
-    }
-    let mut pairs: Vec<_> = map.into_iter().collect();
-    pairs.sort_by(|&(_, a), &(_, b)| b.cmp(&a));
-    for (item, count) in pairs.into_iter().take(10) {
-        println!("{:?}: {}", item, count);
-    }
-}
+
 fn _top_twenty<T: Debug + Hash + Eq>(_values: &Vec<T>)
 where
     T: Debug + Hash + Eq,
@@ -103,14 +88,6 @@ pub fn save_configuration(config: &HashMap<String, String>) -> std::io::Result<(
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    #[test]
-    fn test_top_ten() {
-        let list = vec![
-            1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
-        ];
-        top_ten(&list);
-    }
 
     #[test]
     fn test_save_configuration() {

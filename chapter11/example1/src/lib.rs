@@ -4,6 +4,9 @@ use std::hash::Hash;
 use std::io::Write;
 
 mod stringset;
+mod fully_qualified;
+mod iterator;
+mod rand;
 /// ジェネリクス関数
 /// 
 /// # Examples 

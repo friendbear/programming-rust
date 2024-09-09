@@ -9,14 +9,20 @@ mod tests {
 
     #[test]
     fn test_random() {
-        let value = random::<u32>();
-        assert!(value < 2u32.pow(32));
-
-        let b = random::<bool>();
-        assert!(b == true || b == false);
-
-        let mut rng = rand::thread_rng();
-        let value = rng.gen_range(0..10);
-        assert!(value < 10);
-    }
+       // u32の範囲を確認するテスト
+       let value = rand::random::<u32>();
+       assert!(value <= u32::MAX); // u32::MAX2^32 - 1
+   
+       let b = rand::random::<bool>();
+       // ここで具体的にtrueかfalseかを確認するか、削除
+   
+       let mut rng = rand::thread_rng();
+       let value = rng.gen_range(0..10);
+       assert!(value < 10);
+   
+       // 例えば、特定のが生成されることを確認するテスト
+       let mut rng = rand::thread_rng();
+       let value = rng.gen_range(0..10);
+       assert!(value >= 0 && value < 10);
+   }
 }

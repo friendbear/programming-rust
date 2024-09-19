@@ -1,6 +1,7 @@
 use std::ops::Deref;
 use std::ops::DerefMut;
 pub mod drop;
+pub mod sized;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right

@@ -67,3 +67,21 @@ DerefMutはDerefを拡張知っていることに注意しよう。何らかあ�
 > また参照で使う場合が多い型の「所有バージョン」を実装するにも適している。
 > 例えは、Vec<T>は[T]の、Stringはstrの所有バージョンだ。
 
+## Default
+
+Default::default()で、デフォルト値で全てのフィールドを初期化するには ..構文を使う。
+
+
+> [!IMPORTANT]
+ある型TがDefaultを実装していれば、標準ライブラリが自動的にRC<T>、Arc<T>、Box<T>、Cell<T>、
+RefCell<T>、Cow<T>、Mutex<T>、RwLock<T>についてもDefaultを実装してくれる。
+例えばRc<T>のデフォルト値は、型Tのデフォルト値を参照するRcとなる。
+
+```rust
+trait Default {
+    fn default() -> Self;
+}
+```
+
+タプルの全ての要素がDefaultを実装していれば、そのタプル型もお実装していることになり、個々の要素の
+デフォルト値を保持したタプルがデフォルト値になる。

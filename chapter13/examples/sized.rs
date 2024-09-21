@@ -5,7 +5,7 @@ use std::fmt::Display;
 fn main() {
 
     // RcBox<Display> is not Sized
-    // let boxed_lunch: RcBox<Display> = RcBox {
+    // let boxed_lunch: RcBox<Display> = RcBox { // error[E0277]: the trait bound `Display: std::marker::Sized` is not satisfied
     //     ref_count: 1,
     //     value: "lunch".to_string(),
     // };

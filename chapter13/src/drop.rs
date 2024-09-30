@@ -29,7 +29,7 @@ impl Drop for Application {
     fn drop(&mut self) {
         print!("Dropping {}", self.name);
         if !self.nickname.is_empty() {
-            print!("(drop {})", self.nickname.join(", "))
+            print!("(drop {})", self.nickname.join(", "));
         }
         println!("")
     }

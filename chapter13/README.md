@@ -85,3 +85,78 @@ trait Default {
 
 タプルの全ての要素がDefaultを実装していれば、そのタプル型もお実装していることになり、個々の要素の
 デフォルト値を保持したタプルがデフォルト値になる。
+
+## AsRefとAsMut
+
+`AsRef`と`AsMut`は、Rustの標準ライブラリに含まれるトレイトで、異なる型の参照を扱う際に使われます。これらは、構造体や関数間で参照を変換するための柔軟な方法を提供します。具体的には、`AsRef`は不変の参照を、`AsMut`は可変の参照を提供するために使われます。
+
+### 1. `AsRef` トレイト
+
+`AsRef`は、ある型から参照を借用する際に使用します。これは、元の型から参照を取得し、その参照が別の型として扱われるべき場合に役立ちます。
+
+```rust
+pub trait AsRef<T: ?Sized> {
+    fn as_ref(&self) -> &T;
+}
+```
+
+#### 使い方の例
+
+```rust
+fn print_as_ref<T: AsRef<str>>(input: T) {
+    let s: &str = input.as_ref();
+    println!("{}", s);
+}
+
+fn main() {
+    let s = String::from("Hello");
+    print_as_ref(s);  // String型でもAsRef<str>が実装されているためOK
+}
+```
+
+この場合、`String`は`str`に対して`AsRef<str>`が実装されているため、`String`型の値を関数に渡すことができ、関数内で不変の`&str`参照として扱われます。
+
+#### `AsRef`の利点
+
+- **効率的な型変換**: 値をコピーせずに、異なる型間で安全に参照を取得できます。
+- **柔軟なインターフェース設計**: 関数や構造体のインターフェースで汎用的な型を扱う際に便利です。
+
+### 2. `AsMut` トレイト
+
+`AsMut`は、`AsRef`と似ていますが、可変の参照を取得するために使用されます。
+
+```rust
+pub trait AsMut<T: ?Sized> {
+    fn as_mut(&mut self) -> &mut T;
+}
+```
+
+#### 使い方の例
+
+```rust
+fn modify_as_mut<T: AsMut<str>>(input: &mut T) {
+    let s: &mut str = input.as_mut();
+    s.make_ascii_uppercase();
+}
+
+fn main() {
+    let mut s = String::from("Hello");
+    modify_as_mut(&mut s);
+    println!("{}", s);  // HELLO
+}
+```
+
+この例では、`String`が`AsMut<str>`を実装しているため、`modify_as_mut`関数内で`&mut str`として可変参照が取得できます。
+
+#### `AsMut`の利点
+
+- **可変参照の安全な取得**: 元の型から別の型への可変参照を取得し、直接変更を加えることができます。
+- **効率的な可変アクセス**: 値を再構築することなく、可変の参照を効率的に扱えます。
+
+### まとめ
+
+- **`AsRef`** は、ある型の不変の参照を取得し、異なる型として扱うトレイトです。
+- **`AsMut`** は、ある型の可変の参照を取得して、異なる型に対して変更を加えることができるトレイトです。
+- これらを使うと、汎用的で効率的なインターフェース設計が可能になります。
+
+`AsRef`と`AsMut`は、型間の変換を容易にするため、Rustの多くの標準ライブラリやユーザー定義のコードで利用されています。

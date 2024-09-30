@@ -8,6 +8,7 @@ pub mod default;
 pub mod as_ref;
 //pub mod borrow;
 pub mod from;
+pub mod cow;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right

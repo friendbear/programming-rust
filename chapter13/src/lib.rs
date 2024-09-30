@@ -5,6 +5,9 @@ pub mod sized;
 pub mod deref;
 pub mod clone_and_copy;
 pub mod default;
+pub mod as_ref;
+//pub mod borrow;
+pub mod from;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right

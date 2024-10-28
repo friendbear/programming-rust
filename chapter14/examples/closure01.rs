@@ -1,7 +1,7 @@
 
 use chapter14::City;
 use std::cmp::Reverse;
-
+use chapter14::start_sorting_thread;
 fn main() {
 
 
@@ -40,8 +40,27 @@ mod tests {
     
         // 解決方法 2: sort_by_key + Reverse
         cities.sort_by_key(|city| Reverse(city.population));
-    
+
+       // ソート結果のデバッグ表示
+        for city in &cities {
+            println!("City: {}, Population: {}", city.name, city.population);
+        }
+
+
         assert_eq!(cities[0].name, "Shanghai");
         assert_eq!(cities[9].name, "Tokyo");
+
+        let join_handle = std::thread::spawn(move || {
+            cities.sort_by(|c1, c2| c2.population.cmp(&c1.population));
+            cities
+        });
+
+        let sorted = join_handle.join().unwrap();
+
+        //let sorted = start_sorting_thread(cities);
+        
+        assert_eq!(sorted[0].name, "Shanghai");
+        assert_eq!(sorted[9].name, "Tokyo");
+
     }
 }

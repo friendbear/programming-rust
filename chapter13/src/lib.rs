@@ -1,4 +1,4 @@
-pub struct Application{ 
+pub struct Application {
     pub name: String,
     pub nickname: Vec<String>,
 }

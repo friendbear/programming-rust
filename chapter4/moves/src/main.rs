@@ -34,47 +34,46 @@ fn main() {
     });
     let filter: Vec<&String> = str_v.iter().filter(|x| x.ends_with("5")).collect();
     println!("{:?}", filter);
-
 }
- /** 
+/**
     // Copy Type
  ```rust
  let r = (12, "egg");
- let b = Box::new(r); // allocate a tuplue in the heap 
+ let b = Box::new(r); // allocate a tuplue in the heap
   ```
- 
+
  ### 3.3.3 rawポインタ
- 
+
   Rustには、 `*mut T` と `*const T` というrawポインタが存在する。
- 
+
  ## 3.4 配列、ベクタ、スライス
- 
+
  ### 3.4.4 スライス
- 
+
   * rust
  let v: Vec<f64> = vec![0.0, 0.707, 1.0];
  let a: [f64: 3] =     [0.0, 0.707, 1.0];
- 
+
  let sv: &[f64] = &v;
  let sa: &[f64] = &a;
  ```
- 
+
  ## 3.5 文字列型
- 
+
  ### 3.5.3 メモリ上の文字列型
- 
+
  > ![Tips]
  > code
- 
+
  ```rust
  assert_eq!("".len(), 0);
  assert_eq!("000".char().len(), 3);
  ```
- 
+
  format! マクロ
- 
+
  `format!("{} {:02}{:02}"), 2, 4, 10);`
- 
+
     let l = Label { number: 5 };
     print(l);
     println!("STAMP: {}", l.number);

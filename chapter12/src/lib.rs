@@ -1,4 +1,3 @@
-
 use std::ops::Neg;
 
 #[derive(Debug, PartialEq, Eq)]
@@ -8,7 +7,8 @@ pub struct Complex<T> {
 }
 
 impl<T, O> Neg for Complex<T>
-where T: Neg<Output=O>
+where
+    T: Neg<Output = O>,
 {
     type Output = Complex<O>;
     fn neg(self) -> Self::Output {
@@ -19,17 +19,15 @@ where T: Neg<Output=O>
     }
 }
 
-
 trait Not {
     type Output;
     fn not(self) -> Self::Output;
 }
 
-
 #[derive(Debug)]
 pub struct Image<P> {
     pub width: usize,
-    pub pixels: Vec<P>
+    pub pixels: Vec<P>,
 }
 
 impl<P: Default + Copy> Image<P> {
@@ -37,7 +35,7 @@ impl<P: Default + Copy> Image<P> {
     pub fn new(width: usize, height: usize) -> Image<P> {
         Image {
             width,
-            pixels: vec![P::default(); width * height]
+            pixels: vec![P::default(); width * height],
         }
     }
 }
@@ -46,13 +44,13 @@ impl<P> std::ops::Index<usize> for Image<P> {
     type Output = [P];
     fn index(&self, row: usize) -> &[P] {
         let start = row * self.width;
-        &self.pixels[start.. start + self.width]
+        &self.pixels[start..start + self.width]
     }
 }
 
 impl<P> std::ops::IndexMut<usize> for Image<P> {
     fn index_mut(&mut self, row: usize) -> &mut Self::Output {
         let start = row * self.width;
-        &mut self.pixels[start .. start + self.width]
+        &mut self.pixels[start..start + self.width]
     }
 }

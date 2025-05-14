@@ -1,6 +1,5 @@
 use chapter13::Selector;
 fn main() {
-
     let mut s = Selector {
         elements: vec!['x', 'y', 'z'],
         current: 2,

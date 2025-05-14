@@ -1,6 +1,5 @@
 use make_library::{run_simulation, Fern};
 
-
 fn main() {
     let mut fern = Fern {
         size: 1.0,

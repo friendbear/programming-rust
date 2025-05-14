@@ -1,4 +1,3 @@
-
 pub struct Fern {
     pub size: f64,
     pub growth_rate: f64,

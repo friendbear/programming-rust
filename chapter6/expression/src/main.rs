@@ -131,9 +131,8 @@ enum Pet {
     Fellet,
 }
 
-
 /// loop
-/// 
+///
 #[test]
 fn test_string_vector_loop() {
     let mut vec_string = vec![String::from("foo"), String::from("bar")];
@@ -141,14 +140,14 @@ fn test_string_vector_loop() {
     for rs in &vec_string {
         println!("String {:?} is address is {:p}", *rs, rs)
     }
-    
+
     for rs in &mut vec_string {
         rs.insert_str(rs.len() - 1, "char");
         println!("String {:?} is address is {:p}", *rs, rs)
     }
-    
+
     for rs in &mut vec_string {
         rs.insert_str(rs.len() - 1, "char");
         println!("String {:?} is address is {:p}", *rs, rs)
     }
-} 
+}

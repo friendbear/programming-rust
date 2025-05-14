@@ -39,4 +39,3 @@ fn error_message() -> Vec<String> {
         "500".to_string(),
     ];
 }
-

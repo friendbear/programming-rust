@@ -4,15 +4,12 @@ struct RcBox<T: ?Sized> {
     value: T,
 }
 fn main() {
-
-
     let boxed_lunch: RcBox<String> = RcBox {
         ref_count: 1,
         value: "lunch".to_string(),
     };
 
     let boxed_displayable: &RcBox<dyn Display> = &boxed_lunch;
-
 
     display(boxed_displayable)
 }

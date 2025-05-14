@@ -15,7 +15,6 @@ fn drop_application() {
         nickname: vec![],
     };
     println!("at end of block");
-
 }
 fn main() {
     // Add your code here

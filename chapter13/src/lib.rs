@@ -1,17 +1,14 @@
-pub struct Application {
-    pub name: String,
-    pub nickname: Vec<String>,
-}
-
-impl std::ops::Drop for Application {
-    fn drop(&mut self) {
-        print!("Dropping {}", self.name);
-        if !self.nickname.is_empty() {
-            print!("(AKA{})", self.nickname.join(", "))
-        }
-        println!("");
-    }
-}
+use std::ops::Deref;
+use std::ops::DerefMut;
+pub mod drop;
+pub mod sized;
+pub mod deref;
+pub mod clone_and_copy;
+pub mod default;
+pub mod as_ref;
+//pub mod borrow;
+pub mod from;
+pub mod cow;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right
@@ -22,8 +19,6 @@ pub struct Selector<T> {
     pub current: usize,
 }
 
-use std::ops::Deref;
-use std::ops::DerefMut;
 impl<T> Deref for Selector<T> {
     type Target = T;
     fn deref(&self) -> &T {

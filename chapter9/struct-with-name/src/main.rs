@@ -65,7 +65,7 @@ fn chop(b: Broom) -> (Broom, Broom) {
 use impl_function::Queue;
 
 fn test_queue() {
-    let mut q = Queue::<Vec<char>> {
+    let q = Queue::<Vec<char>> {
         older: Vec::new(),
         younger: Vec::new(),
     };

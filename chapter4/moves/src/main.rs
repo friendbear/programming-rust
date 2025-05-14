@@ -1,5 +1,4 @@
-use std::ops::{Range, RangeTo};
-
+use std::ops::Range;
 #[derive(Copy, Clone)]
 struct Label {
     number: u32,

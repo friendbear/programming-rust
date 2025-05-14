@@ -29,10 +29,7 @@ fn test_basic_type() {
 }
 
 #[test]
-/*
-*
-*
-*/
+/// tuple test
 fn test_tuple() {
     let text = "I see the eigenvalue in thine eye";
 
@@ -121,8 +118,8 @@ fn slice() {
 
     print(&v);
     print(&a);
-    print(&sa);
-    print(&va);
+    print(sa);
+    print(va);
     print(&v[0..2]);
     print(&a[2..]);
     print(&sa[1..3]);
@@ -133,12 +130,13 @@ fn print(n: &[f64]) {
     }
 }
 
+
 #[test]
 fn test_string() {
     let _speech = "Ouch! said the well.\n";
 
     println!(
-        "In the room the women come and go, 
+        "In the room the women come and go,
                 Singing of Mount Abora"
     );
 

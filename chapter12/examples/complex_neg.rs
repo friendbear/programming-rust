@@ -1,6 +1,5 @@
-use std::ops::Neg;
-
 use chapter12::Complex;
+use std::ops::Neg;
 
 fn main() {
     let x_complex = Complex::<i32> { re: 18, im: 200 };
